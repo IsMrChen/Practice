@@ -24,7 +24,8 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void transfer(String outMan, String inMan, Integer money) {
         userDao.out(outMan,money);
-        //int i=1/0;
+        //测试中断
+		//int i=1/0;
         userDao.in(inMan,money);
     }
 
