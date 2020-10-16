@@ -22,23 +22,12 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+	<!--组件扫描-->
+    <context:component-scan base-package="com.cdd.*"/>
     <!--平台事务管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <!--事务的注解驱动-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
-   <!-- &lt;!&ndash;通知 事务的增强&ndash;&gt;
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        &lt;!&ndash;设置事务的属性信息&ndash;&gt;
-        <tx:attributes>
-            <tx:method name="transfer" isolation="READ_COMMITTED" propagation="REQUIRED" read-only="false"/>
-        </tx:attributes>
-    </tx:advice>
-    &lt;!&ndash;事务AOP的织入&ndash;&gt;
-    <aop:config>
-        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.cdd.service.impl.*.*(..))"/>&lt;!&ndash;advisor 配置事务增强&ndash;&gt;
-    </aop:config>-->
-    <!--组件扫描-->
-    <context:component-scan base-package="com.cdd.*"/>
 </beans>
